@@ -9,7 +9,6 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/sidebar/sidebar-menu";
 import Navbar from "@/components/navbar/navbar";
 
-
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -33,30 +32,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${montserrat.className} `}
-      >
+      <body className={`${montserrat.className} `}>
         <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <ReactQueryProvider>
-              <SidebarProvider>
-                
-                <AppSidebar/>
-                
-              
-           
-            <main className=" w-full h-screen">
-              
-            <Navbar />
-            {children}
-          </main>
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+       
+        >
+          <ReactQueryProvider>
+            <SidebarProvider>
+              <AppSidebar />
+
+              <main className=" w-full h-screen">
+                <Navbar />
+                {children}
+              </main>
             </SidebarProvider>
-            </ReactQueryProvider>
-          </ThemeProvider>
+          </ReactQueryProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

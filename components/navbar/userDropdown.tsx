@@ -13,6 +13,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { User, Settings, HelpCircle, LogOut } from 'lucide-react'
 import { getSession } from 'next-auth/react'
+import { ModeToggle } from '../themeToggle/themeToggle'
 
 export function UserDropdown() {
   const [isOpen, setIsOpen] = useState(false)
@@ -38,7 +39,7 @@ export function UserDropdown() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-8 w-8">
-            <AvatarImage src="/placeholder.svg?height=32&width=32" alt="User avatar" />
+            <AvatarImage  alt="User avatar" />
             <AvatarFallback>{session.user?.name?.[0]}</AvatarFallback>
            
           </Avatar>
@@ -64,6 +65,9 @@ export function UserDropdown() {
             <span>Help</span>
           </Link>
         </DropdownMenuItem>
+        {/* <DropdownMenuItem>
+            <ModeToggle/>
+        </DropdownMenuItem> */}
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
           <button className="flex w-full items-center text-red-600" onClick={() => console.log('Logout clicked')}>

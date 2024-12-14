@@ -12,6 +12,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { usePathname } from 'next/navigation'
+import { ModeToggle } from "../themeToggle/themeToggle"
 
 // Menu items.
 const items = [
@@ -64,6 +65,9 @@ export function AppSidebar() {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
+              <SidebarMenuItem>
+                <ModeToggle/>
+              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
