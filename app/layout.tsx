@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import montserrat from "./fonts/font";
+import ReactQueryProvider from "@/utils/provider/reactQueryProvider";
+import { Toaster } from "@/components/ui/sonner";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/sidebar/sidebar-menu";
+import Navbar from "@/components/navbar/navbar";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,9 +34,29 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${montserrat.className} `}
       >
-        {children}
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ReactQueryProvider>
+              <SidebarProvider>
+                
+                <AppSidebar/>
+                
+              
+           
+            <main className=" w-full h-screen">
+              
+            <Navbar />
+            {children}
+          </main>
+            </SidebarProvider>
+            </ReactQueryProvider>
+          </ThemeProvider>
       </body>
     </html>
   );
