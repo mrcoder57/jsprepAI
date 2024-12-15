@@ -12,14 +12,13 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { User, Settings, HelpCircle, LogOut } from 'lucide-react'
-import { getSession } from 'next-auth/react'
+import { getSession, signOut } from 'next-auth/react'
 import { ModeToggle } from '../themeToggle/themeToggle'
 
 export function UserDropdown() {
   const [isOpen, setIsOpen] = useState(false)
   const [session, setSession] = useState<any>(null); // state to hold session
   
-
   useEffect(() => {
     const fetchSession = async () => {
       const sessionData = await getSession();
@@ -34,6 +33,11 @@ export function UserDropdown() {
 
   if (!session) return <div>Loading...</div>; 
 
+  // Handle logout
+  const handleLogout = async () => {
+    await signOut({ redirect: true, callbackUrl: '/' }); // Redirect user to the homepage after logout
+  };
+
   return (
     <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
       <DropdownMenuTrigger asChild>
@@ -41,10 +45,8 @@ export function UserDropdown() {
           <Avatar className="h-8 w-8">
             <AvatarImage  alt="User avatar" />
             <AvatarFallback>{session.user?.name?.[0]}</AvatarFallback>
-           
           </Avatar>
         </Button>
-        
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuItem asChild>
@@ -70,7 +72,7 @@ export function UserDropdown() {
         </DropdownMenuItem> */}
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <button className="flex w-full items-center text-red-600" onClick={() => console.log('Logout clicked')}>
+          <button className="flex w-full items-center text-red-600" onClick={handleLogout}>
             <LogOut className="mr-2 h-4 w-4" />
             <span>Log out</span>
           </button>
@@ -79,4 +81,3 @@ export function UserDropdown() {
     </DropdownMenu>
   )
 }
-
