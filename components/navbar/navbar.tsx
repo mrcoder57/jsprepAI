@@ -6,7 +6,7 @@ import { UserDropdown } from "./userDropdown";
 
 const Navbar = () => {
   const pathname = usePathname();
-  if (pathname === "/auth") {
+  if (pathname === "/auth"|| pathname==='/profile') {
     return null;
   }
   return (
