@@ -1,4 +1,5 @@
 "use client";
+import MCQQuizList from "@/components/question/mcqlist";
 import { getSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -22,9 +23,8 @@ const HomePage = () => {
   if (!session) return <div>Loading...</div>; // Loading state while session is being fetched
 
   return (
-    <div>
-      <h1>Welcome to your Dashboard</h1>
-      <p>Welcome {session?.user?.name}!</p>
+    <div className=" w-full p-6 ">
+    <MCQQuizList/>
     </div>
   );
 };
