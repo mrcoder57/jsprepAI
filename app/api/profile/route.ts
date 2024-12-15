@@ -48,14 +48,10 @@ export async function POST(req: NextRequest) {
 
     // Verify the token
     let decoded;
-    try {
+    
       decoded = await verifyToken(token); // Use the utility function
-    } catch (error) {
-      return NextResponse.json(
-        { success: false, message: 'Unauthorized: Invalid token' },
-        { status: 401 }
-      );
-    }
+
+      
 
     // Extract userId from decoded token
     const userId = decoded.id.toString();
