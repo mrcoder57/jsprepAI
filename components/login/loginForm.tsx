@@ -84,7 +84,7 @@ export function LoginForm() {
       } else {
         const session = await getSession()
         console.log('Session Token:', session?.token)  // Log the token
-        router.push('/') // Redirect after login
+        router.push('/subjects') // Redirect after login
       }
     } catch (error: any) {
       console.error('Signup error:', error)
