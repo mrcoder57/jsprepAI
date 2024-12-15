@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
       
 
     // Extract userId from decoded token
-    const userId = decoded.id.toString();
+    const userId = decoded.id;
     console.log("userId",userId);
 
     // Parse request body
