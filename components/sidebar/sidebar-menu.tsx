@@ -45,7 +45,7 @@ const items = [
 
 export function AppSidebar() {
     const pathname = usePathname();
-    if (pathname === "/auth") {
+    if (pathname === "/auth"|| pathname === "/subjects"|| pathname === '/profile') {
       return null;
     }
   return (
@@ -66,7 +66,7 @@ export function AppSidebar() {
                 </SidebarMenuItem>
               ))}
               <SidebarMenuItem>
-                <ModeToggle/>
+                {/* <ModeToggle/> */}
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
