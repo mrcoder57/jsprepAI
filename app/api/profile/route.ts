@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
     // Verify the token
     let decoded;
     try {
-      decoded = verifyToken(token); // Use the utility function
+      decoded = await verifyToken(token); // Use the utility function
     } catch (error) {
       return NextResponse.json(
         { success: false, message: 'Unauthorized: Invalid token' },
