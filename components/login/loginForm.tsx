@@ -105,7 +105,7 @@ export function LoginForm() {
       <form onSubmit={handleSubmit} className="space-y-4">
         {!isLogin && (
           <div>
-            <Label htmlFor="name" className="text-sm font-medium text-gray-700">Name</Label>
+            <Label htmlFor="name" className="text-sm font-medium">Name</Label>
             <Input
               id="name"
               name="name"
@@ -118,7 +118,7 @@ export function LoginForm() {
           </div>
         )}
         <div>
-          <Label htmlFor="email" className="text-sm font-medium text-gray-700">Email address</Label>
+          <Label htmlFor="email" className="text-sm font-medium ">Email address</Label>
           <Input
             id="email"
             name="email"
@@ -131,7 +131,7 @@ export function LoginForm() {
           />
         </div>
         <div>
-          <Label htmlFor="password" className="text-sm font-medium text-gray-700">Password</Label>
+          <Label htmlFor="password" className="text-sm font-medium ">Password</Label>
           <Input
             id="password"
             name="password"
@@ -156,7 +156,7 @@ export function LoginForm() {
             <div className="w-full border-t border-gray-300" />
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-white text-gray-500">Or continue with</span>
+            <span className="px-2 bg-white text-gray-900 rounded ">Or continue with</span>
           </div>
         </div>
 
@@ -168,7 +168,7 @@ export function LoginForm() {
         </div>
       </div>
 
-      <p className="mt-4 text-center text-sm text-gray-600">
+      <p className="mt-4 text-center text-sm ">
         {isLogin ? "Don't have an account?" : "Already have an account?"}{' '}
         <button onClick={toggleMode} className="font-medium text-indigo-600 hover:text-indigo-500">
           {isLogin ? 'Sign up' : 'Sign in'}
