@@ -40,6 +40,7 @@ export default function RootLayout({
        
         >
           <ReactQueryProvider>
+            <Toaster/>
             <SidebarProvider>
               <AppSidebar />
 
