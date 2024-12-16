@@ -24,9 +24,9 @@ interface TokenPayload {
 
 export function verifyToken(token: string): TokenPayload {
   const JWT_SECRET = process.env.jwt_secret!;
-  if (!JWT_SECRET) {
-    throw new Error('JWT secret is not defined in environment variables.');
-  }
+  // if (!JWT_SECRET) {
+  //   throw new Error('JWT secret is not defined in environment variables.');
+  // }
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET) as TokenPayload;
