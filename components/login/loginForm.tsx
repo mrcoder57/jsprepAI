@@ -9,6 +9,7 @@ import { signIn,getSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
 import { toast } from "sonner"
+import { error } from 'console'
 
 
 export function LoginForm() {
@@ -35,7 +36,7 @@ export function LoginForm() {
       })
 
       if (result?.error) {
-        alert('Login failed. Please try again.')
+      toast.error(result?.error)
       } else {
         const session = await getSession()
         console.log('Session Token:', session?.token)  // Log the token
@@ -51,7 +52,7 @@ export function LoginForm() {
         const result=await signIn('github')
         
         if (result?.error) {
-            alert('Login failed. Please try again.')
+       toast.error(result?.error)
           } else {
             const session = await getSession()
             console.log('Session Token:', session?.token)  // Log the token
