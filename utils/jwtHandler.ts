@@ -1,8 +1,8 @@
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.jwt_secret!;
+
 export const generateToken = (user: any) => {
- 
+  const JWT_SECRET = process.env.jwt_secret!;
   if(!user||!user.id){
     throw new Error('User is not defined or userId is not defined');
   }
