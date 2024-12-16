@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 
 
 export const generateToken = (user: any) => {
-  const JWT_SECRET = process.env.jwt_secret!;
+  const JWT_SECRET = process.env.JWT_SECRET!;
   if(!user||!user.id){
     throw new Error('User is not defined or userId is not defined');
   }
@@ -23,10 +23,10 @@ interface TokenPayload {
 
 
 export function verifyToken(token: string): TokenPayload {
-  const JWT_SECRET = process.env.jwt_secret!;
-  // if (!JWT_SECRET) {
-  //   throw new Error('JWT secret is not defined in environment variables.');
-  // }
+  const JWT_SECRET = process.env.JWT_SECRET!;
+  if (!JWT_SECRET) {
+    throw new Error('JWT secret is not defined in environment variables.');
+  }
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET) as TokenPayload;
