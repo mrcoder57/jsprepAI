@@ -4,7 +4,7 @@ import { getSession } from 'next-auth/react';
 import ProfileForm from './profileForm';
 import SubjectsForm from './subjectForms';
 import { toast } from 'sonner';
-
+import { useRouter } from 'next/navigation';
 const subjectsList = ['JavaScript',
   'Python',
   'Java',
@@ -26,6 +26,7 @@ const MultiStepsForm = () => {
   });
   const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]);
   const [token, setToken] = useState<string | null>(null);
+  const router=useRouter()
 
   useEffect(() => {
     // Retrieve session token when component mounts
@@ -71,6 +72,7 @@ const MultiStepsForm = () => {
       const data = await response.json();
       if (data.success) {
         toast.success('Profile and subjects successfully created!');
+        router.push('/');
       } else {
         toast.error(data.message || 'Something went wrong');
       }

@@ -75,6 +75,13 @@ export async function POST(req: NextRequest) {
 
     // Connect to MongoDB
     await connectToDb();
+    const existingProfile = await ProfileModel.findOne({ userId });
+    if (existingProfile) {
+      return NextResponse.json(
+        { success: false, message: 'Profile already exists' },
+        { status: 409 } // Conflict status code
+      );
+    }
 
     // Create a new profile
     const newProfile = await ProfileModel.create({
