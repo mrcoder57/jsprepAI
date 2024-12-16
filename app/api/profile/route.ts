@@ -89,7 +89,7 @@ export async function POST(req: NextRequest) {
   } catch (error: any) {
     console.error('Error creating profile:', error);
     return NextResponse.json(
-      { success: false, message: 'Server error', error: error.message },
+      { success: false, message: error.message, error: error.message },
       { status: 500 }
     );
   }
